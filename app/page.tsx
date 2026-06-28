@@ -23,6 +23,7 @@ import { MotionLayer } from "@/components/motion-layer";
 import { PlanCta } from "@/components/plan-cta";
 import { ShowcaseSection } from "@/components/showcase-section";
 import { SiteHeader } from "@/components/site-header";
+import { publicPath } from "@/lib/public-path";
 
 const demoUrl = process.env.NEXT_PUBLIC_DEMO_SERVER_URL || "#contact";
 const contactDiscord = process.env.NEXT_PUBLIC_CONTACT_DISCORD || "準備中";
@@ -472,7 +473,7 @@ function Footer() {
         <div>
           <div className="flex items-center gap-3">
             <span className="relative h-12 w-12 overflow-hidden rounded-xl border border-discord/25 bg-[#071225]">
-              <Image src="/brand/botix-logo.png" alt="Botix" fill sizes="48px" className="object-cover" />
+              <Image src={publicPath("/brand/botix-mark.png")} alt="Botix" fill sizes="48px" className="object-contain" />
             </span>
             <div>
               <p className="text-lg font-black">Botix</p>
@@ -483,7 +484,7 @@ function Footer() {
             Discordコミュニティ向けのBot、Web、Activityを丁寧に制作する小規模開発スタジオです。
           </p>
         </div>
-        <div className="flex flex-wrap gap-3 text-sm font-bold text-slate-300 md:justify-end">
+        <div className="flex flex-wrap content-start items-start gap-3 text-sm font-bold text-slate-300 md:justify-end md:self-start">
           {links.map(([label, href]) => (
             <Link key={label} href={href} className="rounded-lg border border-slate-400/15 px-3 py-2 hover:border-discord/45 hover:text-white">
               {label}

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { publicPath } from "@/lib/public-path";
 
 const links = [
   ["できること", "#features"],
@@ -27,7 +28,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
         <a href="#top" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <span className="relative h-11 w-11 overflow-hidden rounded-xl border border-discord/25 bg-[#071225]">
-            <Image src="/brand/botix-logo.png" alt="Botix" fill sizes="44px" className="object-cover" priority />
+            <Image src={publicPath("/brand/botix-mark.png")} alt="Botix" fill sizes="44px" className="object-contain" priority />
           </span>
           <span className="leading-tight">
             <span className="block text-base font-black text-white">Botix</span>

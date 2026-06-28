@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ExternalLink, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { publicPath } from "@/lib/public-path";
 
 type ShowcaseItem = {
   title: string;
@@ -146,7 +147,7 @@ function ShowcaseImage({ item, modal }: { item: ShowcaseItem; modal?: boolean })
   return (
     <div className={modal ? "showcase-image showcase-image-modal" : "showcase-image"}>
       {!failed ? (
-        <Image src={item.image} alt={`${item.title}のスクリーンショット`} fill sizes="(max-width: 768px) 100vw, 560px" className="object-cover" onError={() => setFailed(true)} />
+        <Image src={publicPath(item.image)} alt={`${item.title}のスクリーンショット`} fill sizes="(max-width: 768px) 100vw, 560px" className="object-cover" onError={() => setFailed(true)} />
       ) : (
         <div className="placeholder-screen">
           <div className="mb-5 flex gap-2">
