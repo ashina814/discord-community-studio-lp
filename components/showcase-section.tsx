@@ -14,18 +14,18 @@ type ShowcaseItem = {
 
 const showcases: ShowcaseItem[] = [
   {
-    title: "操作パネル",
+    title: "Discord操作パネル",
     image: "/showcase/panel.png",
-    text: "ロール、チケット、イベント告知などを、管理者が迷わず扱えるパネルに整理します。",
-    scene: "運営メンバーが日常的に触る管理導線をまとめたいとき。",
+    text: "ロール、チケット、告知、イベント導線を、管理者が迷わず扱える画面に整理します。",
+    scene: "運営メンバーが日常的に触る管理導線をまとめたいサーバー向け。",
     tags: ["Bot", "Panel", "Admin"],
   },
   {
     title: "経済チューニング",
     image: "/showcase/economy-settings.png",
-    text: "報酬量、通貨回収、ショップ価格を見ながら、インフレしにくい経済圏に調整します。",
-    scene: "独自通貨やショップを長く遊べるバランスにしたいとき。",
-    tags: ["Economy", "Rank", "Dashboard"],
+    text: "報酬量、通貨回収、ショップ価格を見ながら、遊びやすい経済バランスに調整します。",
+    scene: "独自通貨やショップを長く遊べる状態にしたいサーバー向け。",
+    tags: ["Economy", "Rank", "Balance"],
   },
   {
     title: "声診断・相性診断",
@@ -38,14 +38,14 @@ const showcases: ShowcaseItem[] = [
     title: "Discord連携Web",
     image: "/showcase/web-login.png",
     text: "Discordログイン、ランキング、申請フォーム、診断結果ページなどをWeb化します。",
-    scene: "サーバー外にも世界観や参加導線を広げたいとき。",
+    scene: "サーバー外にも世界観や参加導線を広げたいサーバー向け。",
     tags: ["Web", "Login", "Portal"],
   },
   {
     title: "Activity / ミニゲーム",
     image: "/showcase/activity.png",
     text: "Discord内で遊べるミニゲームやイベント用Activityを、目的に合わせて制作します。",
-    scene: "イベント日やVC中に、みんなで遊べる体験が欲しいとき。",
+    scene: "イベント日やVC中に、みんなで触れる体験が欲しいとき。",
     tags: ["Activity", "Game", "Event"],
   },
 ];
@@ -65,13 +65,13 @@ export function ShowcaseSection() {
   }, []);
 
   return (
-    <section id="showcase" className="section-shell bg-[#070a12]">
+    <section id="showcase" className="section-shell bg-[#030711]">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 max-w-3xl" data-reveal>
           <p className="eyebrow">Showcase</p>
           <h2 className="section-title">実際に、こういう体験を作れます。</h2>
           <p className="section-copy">
-            Botの操作パネル、経済設定、診断結果、Discord連携Webなど、実際の利用シーンが伝わる画面を中心に見せます。
+            Botの操作パネル、経済設定、診断結果、Discord連携Webなど、導入後の利用シーンが見える画面を中心に紹介します。
           </p>
         </div>
         <div className="mb-5 flex gap-2 overflow-x-auto pb-2" data-reveal>
@@ -87,7 +87,7 @@ export function ShowcaseSection() {
           ))}
         </div>
         <article className="showcase-card" data-reveal>
-          <button type="button" onClick={() => setActive(item)} className="showcase-media">
+          <button type="button" onClick={() => setActive(item)} className="showcase-media" aria-label={`${item.title}を拡大表示`}>
             <ShowcaseImage item={item} />
           </button>
           <div className="p-6 sm:p-8">
@@ -106,7 +106,7 @@ export function ShowcaseSection() {
                 詳しく見る
               </button>
               <a href="#demo" className="inline-flex items-center gap-2 rounded-xl border border-discord/35 bg-discord/10 px-5 py-3 text-sm font-black text-white transition hover:bg-discord/15">
-                デモで試す
+                デモを見る
                 <ExternalLink size={15} />
               </a>
             </div>
@@ -117,7 +117,7 @@ export function ShowcaseSection() {
       {active ? (
         <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4 backdrop-blur-md" onClick={() => setActive(null)}>
           <div className="modal-panel" onClick={(event) => event.stopPropagation()}>
-            <button type="button" onClick={() => setActive(null)} className="absolute right-4 top-4 rounded-full border border-white/[0.08] bg-white/[0.06] p-2 text-slate-300 hover:text-white" aria-label="閉じる">
+            <button type="button" onClick={() => setActive(null)} className="absolute right-4 top-4 z-10 rounded-full border border-white/[0.08] bg-white/[0.08] p-2 text-slate-300 hover:text-white" aria-label="閉じる">
               <X size={18} />
             </button>
             <ShowcaseImage item={active} modal />
@@ -131,7 +131,7 @@ export function ShowcaseSection() {
               </div>
               <h3 className="text-2xl font-black">{active.title}</h3>
               <p className="mt-4 leading-8 text-slate-300">{active.text}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-500">使える場面: {active.scene}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-500">活用できるサーバー例: {active.scene}</p>
             </div>
           </div>
         </div>
@@ -154,7 +154,7 @@ function ShowcaseImage({ item, modal }: { item: ShowcaseItem; modal?: boolean })
             <span />
             <span />
           </div>
-          <p className="text-xs font-black uppercase text-discord">{item.tags.join(" / ")}</p>
+          <p className="text-xs font-black uppercase text-cyan">{item.tags.join(" / ")}</p>
           <p className="mt-3 text-2xl font-black text-white">{item.title}</p>
           <div className="mt-6 grid gap-3">
             <i className="w-11/12" />

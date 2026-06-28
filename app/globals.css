@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: dark;
-  --background: #070a12;
+  --background: #030711;
   --foreground: #f8fafc;
 }
 
@@ -20,9 +20,9 @@ body {
   margin: 0;
   color: var(--foreground);
   background:
-    linear-gradient(120deg, rgba(88, 101, 242, 0.14), transparent 28%),
-    linear-gradient(260deg, rgba(139, 92, 246, 0.12), transparent 30%),
-    linear-gradient(180deg, #070a12 0%, #0b1020 48%, #070a12 100%);
+    linear-gradient(120deg, rgba(30, 136, 255, 0.12), transparent 30%),
+    linear-gradient(260deg, rgba(56, 189, 248, 0.08), transparent 34%),
+    linear-gradient(180deg, #030711 0%, #071225 50%, #030711 100%);
   font-family:
     "Noto Sans JP",
     "Yu Gothic",
@@ -37,8 +37,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 78% 12%, rgba(88, 101, 242, 0.18), transparent 28rem),
-    radial-gradient(circle at 12% 42%, rgba(125, 211, 252, 0.09), transparent 24rem);
+    radial-gradient(circle at 78% 12%, rgba(30, 136, 255, 0.16), transparent 28rem),
+    radial-gradient(circle at 12% 42%, rgba(56, 189, 248, 0.08), transparent 24rem);
   z-index: -1;
 }
 
@@ -57,13 +57,13 @@ textarea {
 }
 
 ::selection {
-  background: rgba(88, 101, 242, 0.65);
+  background: rgba(30, 136, 255, 0.62);
 }
 
 .glass {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(180deg, rgba(17, 24, 39, 0.78), rgba(7, 10, 18, 0.66));
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: linear-gradient(180deg, rgba(11, 22, 40, 0.82), rgba(3, 7, 17, 0.7));
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(18px);
 }
 
@@ -97,43 +97,43 @@ textarea {
 
 @layer components {
   .field {
-    @apply min-h-12 w-full rounded-xl border border-white/[0.08] bg-[#070a12]/80 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-discord/70 focus:ring-2 focus:ring-discord/20;
+    @apply min-h-12 w-full rounded-xl border border-slate-400/15 bg-[#030711]/80 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-discord/70 focus:ring-2 focus:ring-discord/20;
   }
 
   .neon-button {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-discord to-neon px-6 py-4 text-center text-sm font-black text-white shadow-glow transition duration-200 hover:translate-y-[-1px] hover:shadow-[0_0_48px_rgba(88,101,242,0.46)] active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-discord to-neon px-6 py-4 text-center text-sm font-black text-white shadow-glow transition duration-200 hover:translate-y-[-1px] hover:shadow-[0_0_42px_rgba(30,136,255,0.32)] active:scale-[0.98];
   }
 
   .secondary-button {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/[0.10] bg-white/[0.045] px-6 py-4 text-center text-sm font-black text-white transition duration-200 hover:translate-y-[-1px] hover:border-discord/45 hover:bg-discord/10 active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-400/15 bg-white/[0.045] px-6 py-4 text-center text-sm font-black text-white transition duration-200 hover:translate-y-[-1px] hover:border-discord/45 hover:bg-discord/10 active:scale-[0.98];
   }
 
   .dashboard-shell {
-    @apply overflow-hidden rounded-[28px] border border-white/[0.08] bg-[#0b1020]/90 shadow-[0_28px_120px_rgba(0,0,0,0.46),0_0_80px_rgba(88,101,242,0.18)] backdrop-blur-xl;
+    @apply overflow-hidden rounded-[28px] border border-slate-400/15 bg-[#0b1628]/90 shadow-[0_28px_110px_rgba(0,0,0,0.42),0_0_70px_rgba(30,136,255,0.12)] backdrop-blur-xl;
   }
 
   .feature-panel {
-    @apply rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.075] to-white/[0.025] p-6 transition duration-200 hover:-translate-y-1 hover:border-discord/45 hover:bg-white/[0.075];
+    @apply rounded-2xl border border-slate-400/15 bg-gradient-to-br from-white/[0.06] to-white/[0.025] p-6 transition duration-200 hover:-translate-y-1 hover:border-discord/40 hover:bg-white/[0.07];
   }
 
   .price-card {
-    @apply relative flex flex-col rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.07] to-white/[0.025] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.24)] transition duration-200 hover:-translate-y-1 hover:border-discord/35;
+    @apply relative flex flex-col rounded-2xl border border-slate-400/15 bg-gradient-to-br from-white/[0.06] to-white/[0.025] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-1 hover:border-discord/35;
   }
 
   .price-card-featured {
-    @apply border-gold/35 bg-gradient-to-br from-gold/10 via-white/[0.07] to-discord/10 shadow-[0_18px_70px_rgba(245,197,66,0.12)];
+    @apply border-discord/45 bg-gradient-to-br from-discord/10 via-white/[0.06] to-cyan/10 shadow-[0_18px_70px_rgba(30,136,255,0.12)];
   }
 
   .step-card {
-    @apply rounded-2xl border border-white/[0.08] bg-white/[0.045] p-5;
+    @apply rounded-2xl border border-slate-400/15 bg-white/[0.045] p-5;
   }
 
   .site-header {
-    @apply sticky top-0 z-50 border-b border-transparent bg-[#070a12]/55 px-5 py-3.5 backdrop-blur-sm transition duration-200 sm:px-8 lg:px-12;
+    @apply sticky top-0 z-50 border-b border-transparent bg-[#030711]/55 px-5 py-3.5 backdrop-blur-sm transition duration-200 sm:px-8 lg:px-12;
   }
 
   .site-header-scrolled {
-    @apply border-white/[0.08] bg-[#070a12]/90 backdrop-blur-xl shadow-[0_18px_60px_rgba(0,0,0,0.24)];
+    @apply border-slate-400/15 bg-[#030711]/90 backdrop-blur-xl shadow-[0_18px_60px_rgba(0,0,0,0.24)];
   }
 
   .ranking-row {
@@ -193,7 +193,7 @@ textarea {
   }
 
   .showcase-card {
-    @apply grid overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-white/[0.07] to-white/[0.025] shadow-[0_24px_90px_rgba(0,0,0,0.28)] transition duration-200 hover:-translate-y-1 hover:border-discord/35 lg:grid-cols-[1.05fr_0.95fr];
+    @apply grid overflow-hidden rounded-3xl border border-slate-400/15 bg-gradient-to-br from-white/[0.06] to-white/[0.025] shadow-[0_24px_90px_rgba(0,0,0,0.26)] transition duration-200 hover:-translate-y-1 hover:border-discord/35 lg:grid-cols-[1.05fr_0.95fr];
   }
 
   .showcase-tab {
@@ -201,7 +201,7 @@ textarea {
   }
 
   .showcase-tab-active {
-    @apply border-discord/45 bg-discord/15 text-white shadow-glow;
+    @apply border-discord/45 bg-discord/15 text-white;
   }
 
   .showcase-media {
@@ -217,7 +217,7 @@ textarea {
   }
 
   .placeholder-screen {
-    @apply h-full min-h-64 bg-[radial-gradient(circle_at_70%_15%,rgba(88,101,242,0.24),transparent_18rem),linear-gradient(135deg,rgba(15,23,42,0.94),rgba(7,10,18,0.98))] p-6;
+    @apply h-full min-h-64 bg-[radial-gradient(circle_at_70%_15%,rgba(30,136,255,0.22),transparent_18rem),linear-gradient(135deg,rgba(11,22,40,0.94),rgba(3,7,17,0.98))] p-6;
   }
 
   .placeholder-screen span {
@@ -237,7 +237,7 @@ textarea {
   }
 
   .modal-panel {
-    @apply relative max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-white/[0.10] bg-[#0b1020] shadow-[0_28px_120px_rgba(0,0,0,0.6)];
+    @apply relative max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-slate-400/15 bg-[#0b1628] shadow-[0_28px_120px_rgba(0,0,0,0.6)];
   }
 
   .mobile-bottom-cta {
@@ -263,7 +263,7 @@ body:has(#contact select:focus) .mobile-bottom-cta {
     background: rgba(255, 255, 255, 0.045);
   }
   50% {
-    background: rgba(88, 101, 242, 0.085);
+    background: rgba(30, 136, 255, 0.08);
   }
 }
 
@@ -271,20 +271,20 @@ body:has(#contact select:focus) .mobile-bottom-cta {
   0% {
     box-shadow:
       0 24px 80px rgba(0, 0, 0, 0.34),
-      0 0 0 rgba(88, 101, 242, 0);
+      0 0 0 rgba(30, 136, 255, 0);
     border-color: rgba(255, 255, 255, 0.08);
   }
   28% {
     box-shadow:
       0 24px 80px rgba(0, 0, 0, 0.34),
-      0 0 0 5px rgba(88, 101, 242, 0.18),
-      0 0 64px rgba(88, 101, 242, 0.28);
-    border-color: rgba(139, 92, 246, 0.46);
+      0 0 0 5px rgba(30, 136, 255, 0.16),
+      0 0 64px rgba(30, 136, 255, 0.22);
+    border-color: rgba(56, 189, 248, 0.46);
   }
   100% {
     box-shadow:
       0 24px 80px rgba(0, 0, 0, 0.34),
-      0 0 0 rgba(88, 101, 242, 0);
+      0 0 0 rgba(30, 136, 255, 0);
     border-color: rgba(255, 255, 255, 0.08);
   }
 }

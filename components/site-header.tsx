@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowRight, Gem, Menu, X } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const links = [
@@ -24,11 +25,16 @@ export function SiteHeader() {
   return (
     <header className={scrolled ? "site-header site-header-scrolled" : "site-header"}>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
-        <a href="#top" className="flex items-center gap-3 text-sm font-black" onClick={() => setOpen(false)}>
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-discord/40 bg-discord/15 text-discord shadow-glow">
-            <Gem size={20} />
+        <a href="#top" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+          <span className="relative h-11 w-11 overflow-hidden rounded-xl border border-discord/25 bg-[#071225]">
+            <Image src="/brand/botix-logo.png" alt="Botix" fill sizes="44px" className="object-cover" priority />
           </span>
-          <span>Discord Community Studio</span>
+          <span className="leading-tight">
+            <span className="block text-base font-black text-white">Botix</span>
+            <span className="hidden text-[11px] font-bold uppercase tracking-[0.18em] text-cyan sm:block">
+              Discord Bots. Built Better.
+            </span>
+          </span>
         </a>
         <nav className="hidden items-center gap-2 text-sm font-bold text-slate-300 md:flex">
           {links.map(([label, href]) => (
@@ -36,17 +42,22 @@ export function SiteHeader() {
               {label}
             </a>
           ))}
-          <a href="#contact" className="inline-flex items-center gap-2 rounded-lg bg-discord/90 px-4 py-2 text-white shadow-glow transition hover:bg-discord">
+          <a href="#contact" className="inline-flex items-center gap-2 rounded-lg bg-discord px-4 py-2 text-white shadow-glow transition hover:bg-cyan">
             相談
             <ArrowRight size={15} />
           </a>
         </nav>
-        <button type="button" className="rounded-xl border border-white/[0.08] bg-white/[0.045] p-2 md:hidden" onClick={() => setOpen((value) => !value)} aria-label="メニュー">
+        <button
+          type="button"
+          className="rounded-xl border border-slate-400/15 bg-white/[0.045] p-2 md:hidden"
+          onClick={() => setOpen((value) => !value)}
+          aria-label="メニュー"
+        >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
       {open ? (
-        <nav className="mx-auto mt-3 grid max-w-6xl gap-2 rounded-2xl border border-white/[0.08] bg-[#0b1020] p-3 text-sm font-bold text-slate-200 md:hidden">
+        <nav className="mx-auto mt-3 grid max-w-6xl gap-2 rounded-2xl border border-slate-400/15 bg-[#0b1628] p-3 text-sm font-bold text-slate-200 md:hidden">
           {links.map(([label, href]) => (
             <a key={label} href={href} className="rounded-xl px-3 py-3 hover:bg-white/[0.06]" onClick={() => setOpen(false)}>
               {label}

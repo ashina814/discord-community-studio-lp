@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Discord Community Studio",
+  title: "Botix | Discord Bots. Built Better.",
   description:
-    "Discordコミュニティ向けBot・Web・Activity開発サービス。経済圏、ランク、VC報酬、Web連携まで相談できます。",
+    "BotixはDiscordコミュニティ向けのBot、Web、Activityを制作する小規模開発スタジオです。経済圏、ランク、VC報酬、運営支援、Discord連携Webまで相談できます。",
 };
 
 export default function RootLayout({
