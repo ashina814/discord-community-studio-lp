@@ -79,6 +79,30 @@ textarea {
   background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.045), transparent 42%);
 }
 
+.hero-brand-bg {
+  position: absolute;
+  top: 4rem;
+  right: -13rem;
+  width: min(72vw, 980px);
+  height: min(54vw, 720px);
+  pointer-events: none;
+  opacity: 0.09;
+  filter: blur(2.5px);
+  transform: scale(1.16);
+  animation: brandFloat 14s ease-in-out infinite;
+  mask-image: radial-gradient(ellipse at center, black 0%, rgba(0, 0, 0, 0.72) 42%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, rgba(0, 0, 0, 0.72) 42%, transparent 78%);
+}
+
+.hero-brand-bg::before {
+  content: "";
+  position: absolute;
+  inset: 20%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(30, 136, 255, 0.34), rgba(56, 189, 248, 0.12) 38%, transparent 68%);
+  filter: blur(42px);
+}
+
 [data-reveal] {
   opacity: 0;
   transform: translateY(16px);
@@ -289,6 +313,27 @@ body:has(#contact select:focus) .mobile-bottom-cta {
   }
 }
 
+@keyframes brandFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.16);
+  }
+  50% {
+    transform: translate3d(0, 18px, 0) scale(1.18);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-brand-bg {
+    top: 5.5rem;
+    right: -16rem;
+    width: 42rem;
+    height: 32rem;
+    opacity: 0.055;
+    filter: blur(3.5px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -308,7 +353,8 @@ body:has(#contact select:focus) .mobile-bottom-cta {
   }
 
   .ranking-row,
-  .form-highlight {
+  .form-highlight,
+  .hero-brand-bg {
     animation: none;
   }
 }

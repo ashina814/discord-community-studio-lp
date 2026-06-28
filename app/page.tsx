@@ -376,6 +376,9 @@ function Hero() {
     <section id="top" className="relative px-5 pb-20 pt-14 sm:px-8 sm:pt-20 lg:px-12">
       <div className="grid-bg absolute inset-0" aria-hidden="true" />
       <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(30,136,255,0.13),transparent_32%,rgba(56,189,248,0.08)_68%,transparent)]" aria-hidden="true" />
+      <div className="hero-brand-bg" aria-hidden="true">
+        <Image src={publicPath("/brand/botix-logo.png")} alt="" fill sizes="980px" className="object-contain" priority />
+      </div>
       <div className="relative mx-auto grid min-h-[calc(100vh-88px)] max-w-6xl items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-discord/35 bg-discord/10 px-4 py-2 text-xs font-black uppercase text-cyan">
