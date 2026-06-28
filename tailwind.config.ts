@@ -8,16 +8,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        void: "#030711",
-        panel: "#0B1628",
-        discord: "#1E88FF",
-        neon: "#38BDF8",
-        cyan: "#38BDF8",
-        gold: "#1E88FF",
+        void: "#07090E",
+        panel: "#0E1119",
+        discord: "#4D86FF",
+        neon: "#8B7BFF",
+        cyan: "#74A0FF",
+        gold: "#4D86FF",
       },
       boxShadow: {
-        glow: "0 0 34px rgba(30, 136, 255, 0.24)",
-        gold: "0 0 28px rgba(56, 189, 248, 0.18)",
+        glow: "0 12px 34px rgba(77, 134, 255, 0.32)",
+        gold: "0 12px 28px rgba(77, 134, 255, 0.18)",
       },
     },
   },

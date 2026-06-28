@@ -1,28 +1,29 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export function FaqList({ faqs }: { faqs: Array<[string, string]> }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="space-y-3">
+    <div className="faq-list">
       {faqs.map(([question, answer], index) => {
         const isOpen = open === index;
+        const displayIndex = String(index + 1).padStart(2, "0");
+
         return (
           <div key={question} className={isOpen ? "faq-item faq-item-open" : "faq-item"}>
-            <button
-              type="button"
-              onClick={() => setOpen(isOpen ? null : index)}
-              className="flex w-full items-center justify-between gap-4 text-left text-base font-black"
-              aria-expanded={isOpen}
-            >
-              <span>{question}</span>
-              <ChevronDown className={isOpen ? "h-5 w-5 shrink-0 rotate-180 text-discord" : "h-5 w-5 shrink-0 text-slate-500"} />
+            <button type="button" onClick={() => setOpen(isOpen ? null : index)} className="faq-button" aria-expanded={isOpen}>
+              <span className="faq-index">{displayIndex}</span>
+              <span className="faq-question">{question}</span>
+              <span className="faq-plus" aria-hidden="true">
+                +
+              </span>
             </button>
             <div className={isOpen ? "faq-answer faq-answer-open" : "faq-answer"}>
-              <p className="pt-4 leading-8 text-slate-300">{answer}</p>
+              <div>
+                <p>{answer}</p>
+              </div>
             </div>
           </div>
         );

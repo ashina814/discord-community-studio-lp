@@ -108,37 +108,41 @@ export function ContactForm() {
   };
 
   return (
-    <form ref={formRef} onSubmit={submit} className={highlight ? "glass form-highlight space-y-5 rounded-3xl p-5 sm:p-7" : "glass space-y-5 rounded-3xl p-5 sm:p-7"}>
+    <form ref={formRef} onSubmit={submit} className={highlight ? "contact-card form-highlight" : "contact-card"}>
+      {form.plan ? (
+        <div className="mb-4">
+          <span className="selected-plan-chip">PLAN&nbsp;&nbsp;{form.plan}</span>
+        </div>
+      ) : null}
+
       {notice ? (
-        <div
-          className={`rounded-2xl border px-4 py-3 text-sm leading-7 ${
-            status === "success"
-              ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-200"
-              : status === "error"
-                ? "border-rose-400/30 bg-rose-400/10 text-rose-200"
-                : "border-discord/30 bg-discord/10 text-slate-200"
-          }`}
-        >
+        <div className={`form-notice ${status === "success" ? "form-notice-success" : ""} ${status === "error" ? "form-notice-error" : ""}`}>
           {notice}
         </div>
       ) : null}
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="お名前 / ハンドルネーム" required>
-          <input ref={nameRef} value={form.name} onChange={(event) => update("name", event.target.value)} placeholder="例: 山田 / neko_admin" className="field" />
+
+      <div className="form-grid">
+        <Field label="NAME / お名前" required>
+          <input ref={nameRef} value={form.name} onChange={(event) => update("name", event.target.value)} placeholder="例: neko_admin" className="field" />
         </Field>
-        <Field label="Discord ID">
+
+        <Field label="DISCORD ID">
           <input value={form.discordId} onChange={(event) => update("discordId", event.target.value)} placeholder="例: username" className="field" />
         </Field>
-        <Field label="連絡先">
+
+        <Field label="CONTACT / 連絡先">
           <input value={form.contact} onChange={(event) => update("contact", event.target.value)} placeholder="メール、X、Discord以外の連絡先" className="field" />
         </Field>
-        <Field label="サーバー名">
+
+        <Field label="SERVER / サーバー名">
           <input value={form.serverName} onChange={(event) => update("serverName", event.target.value)} placeholder="例: 夜更かしゲーム部" className="field" />
         </Field>
-        <Field label="サーバー人数">
+
+        <Field label="MEMBERS / 人数">
           <input value={form.memberCount} onChange={(event) => update("memberCount", event.target.value)} placeholder="例: 80人" className="field" />
         </Field>
-        <Field label="サーバージャンル" required>
+
+        <Field label="GENRE / ジャンル" required>
           <select value={form.genre} onChange={(event) => update("genre", event.target.value)} className="field">
             <option value="">選択してください</option>
             {genres.map((genre) => (
@@ -148,7 +152,8 @@ export function ContactForm() {
             ))}
           </select>
         </Field>
-        <Field label="希望プラン">
+
+        <Field label="PLAN / 希望プラン">
           <select value={form.plan} onChange={(event) => update("plan", event.target.value)} className="field">
             <option value="">選択してください</option>
             {plans.map((plan) => (
@@ -158,36 +163,40 @@ export function ContactForm() {
             ))}
           </select>
         </Field>
-        <Field label="予算感">
+
+        <Field label="BUDGET / 予算感">
           <input value={form.budget} onChange={(event) => update("budget", event.target.value)} placeholder="例: 月額1万円以内" className="field" />
+        </Field>
+
+        <Field label="FEATURES / 欲しい機能" full>
+          <textarea value={form.features} onChange={(event) => update("features", event.target.value)} placeholder="経済Bot、VCランク、ショップ、診断Botなど" className="field" />
+        </Field>
+
+        <Field label="WORLD / 世界観・方向性" full>
+          <textarea value={form.concept} onChange={(event) => update("concept", event.target.value)} placeholder="サーバーの雰囲気、通貨名、遊び方のイメージなど" className="field" />
+        </Field>
+
+        <Field label="TIMING / 導入希望時期" full>
+          <input value={form.timing} onChange={(event) => update("timing", event.target.value)} placeholder="例: 今月中 / 相談して決めたい" className="field" />
+        </Field>
+
+        <Field label="MESSAGE / 相談内容" required full>
+          <textarea value={form.message} onChange={(event) => update("message", event.target.value)} placeholder="まだ固まっていない内容でも大丈夫です。今困っていることや、作りたい雰囲気を書いてください。" className="field" />
         </Field>
       </div>
 
-      <Field label="欲しい機能">
-        <textarea value={form.features} onChange={(event) => update("features", event.target.value)} placeholder="経済Bot、VCランク、ショップ、診断Botなど" className="field min-h-28" />
-      </Field>
-      <Field label="やりたい世界観・方向性">
-        <textarea value={form.concept} onChange={(event) => update("concept", event.target.value)} placeholder="サーバーの雰囲気、通貨名、遊び方のイメージなど" className="field min-h-28" />
-      </Field>
-      <Field label="導入希望時期">
-        <input value={form.timing} onChange={(event) => update("timing", event.target.value)} placeholder="例: 今月中 / 相談して決めたい" className="field" />
-      </Field>
-      <Field label="相談内容" required>
-        <textarea value={form.message} onChange={(event) => update("message", event.target.value)} placeholder="相談したい内容を自由に書いてください" className="field min-h-36" />
-      </Field>
-
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <button type="submit" disabled={status === "submitting"} className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-discord to-cyan px-6 py-3 text-sm font-black text-white shadow-glow transition hover:translate-y-[-1px] disabled:cursor-not-allowed disabled:opacity-60">
+      <div className="form-actions">
+        <button type="submit" disabled={status === "submitting"} className="bx-primary-btn">
           {status === "submitting" ? (
-            <span className="inline-flex items-center gap-2">
-              <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+            <>
+              <span className="spinner" />
               送信準備中
-            </span>
+            </>
           ) : (
             "相談内容を送信する"
           )}
         </button>
-        {!notice ? <p className="text-sm text-slate-400">必須項目は、お名前、ジャンル、相談内容、Discord IDまたは連絡先です。</p> : null}
+        {!notice ? <p className="form-help">必須は、お名前・ジャンル・相談内容・Discord IDまたは連絡先です。</p> : null}
       </div>
     </form>
   );
@@ -196,17 +205,19 @@ export function ContactForm() {
 function Field({
   label,
   required,
+  full,
   children,
 }: {
   label: string;
   required?: boolean;
+  full?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <label className="block text-sm font-bold text-slate-200">
-      <span className="mb-2 flex items-center gap-2">
+    <label className={full ? "form-field form-field-full" : "form-field"}>
+      <span className="form-label">
         {label}
-        {required ? <span className="rounded-full border border-discord/40 bg-discord/10 px-2 py-0.5 text-[11px] text-cyan">必須</span> : null}
+        {required ? <span className="required-badge">REQ</span> : null}
       </span>
       {children}
     </label>

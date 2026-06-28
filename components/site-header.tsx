@@ -24,48 +24,44 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className={scrolled ? "site-header site-header-scrolled" : "site-header"}>
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
-        <a href="#top" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="relative h-11 w-11 overflow-hidden rounded-xl border border-discord/25 bg-[#071225]">
-            <Image src={publicPath("/brand/botix-mark.png")} alt="Botix" fill sizes="44px" className="object-contain" priority />
+    <header className={scrolled ? "bx-header bx-header-scrolled" : "bx-header"}>
+      <div className="bx-container bx-header-inner">
+        <a href="#top" className="bx-brand" onClick={() => setOpen(false)}>
+          <span className="bx-brand-mark">
+            <Image src={publicPath("/brand/botix-mark.png")} alt="Botix" fill sizes="36px" className="object-contain" priority />
           </span>
-          <span className="leading-tight">
-            <span className="block text-base font-black text-white">Botix</span>
-            <span className="hidden text-[11px] font-bold uppercase tracking-[0.18em] text-cyan sm:block">
-              Discord Bots. Built Better.
-            </span>
+          <span>
+            <span className="bx-brand-name">Botix</span>
+            <span className="bx-brand-tag">Discord Bots. Built Better.</span>
           </span>
         </a>
-        <nav className="hidden items-center gap-2 text-sm font-bold text-slate-300 md:flex">
+
+        <nav className="bx-nav" aria-label="メインナビゲーション">
           {links.map(([label, href]) => (
-            <a key={label} href={href} className="nav-link">
+            <a key={label} href={href} className="bx-nav-link">
               {label}
             </a>
           ))}
-          <a href="#contact" className="inline-flex items-center gap-2 rounded-lg bg-discord px-4 py-2 text-white shadow-glow transition hover:bg-cyan">
-            相談
-            <ArrowRight size={15} />
+          <a href="#contact" className="bx-primary-btn">
+            相談する
+            <ArrowRight size={16} />
           </a>
         </nav>
-        <button
-          type="button"
-          className="rounded-xl border border-slate-400/15 bg-white/[0.045] p-2 md:hidden"
-          onClick={() => setOpen((value) => !value)}
-          aria-label="メニュー"
-        >
+
+        <button type="button" className="bx-menu-btn" onClick={() => setOpen((value) => !value)} aria-label="メニュー" aria-expanded={open}>
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
+
       {open ? (
-        <nav className="mx-auto mt-3 grid max-w-6xl gap-2 rounded-2xl border border-slate-400/15 bg-[#0b1628] p-3 text-sm font-bold text-slate-200 md:hidden">
+        <nav className="bx-mobile-menu" aria-label="モバイルナビゲーション">
           {links.map(([label, href]) => (
-            <a key={label} href={href} className="rounded-xl px-3 py-3 hover:bg-white/[0.06]" onClick={() => setOpen(false)}>
+            <a key={label} href={href} onClick={() => setOpen(false)}>
               {label}
             </a>
           ))}
-          <a href="#contact" className="rounded-xl bg-discord px-3 py-3 text-center text-white" onClick={() => setOpen(false)}>
-            無料相談する
+          <a href="#contact" onClick={() => setOpen(false)}>
+            無料で相談する
           </a>
         </nav>
       ) : null}
